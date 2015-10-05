@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang=ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Sitemap : front-end developer's favorites bookmarks.</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://bootswatch.com/lumen/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/doors.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+
+
+</head>
+<body>
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+
+
+            <!-- 타이틀 부분 -->
+            <article class="titleSec">
+                <h1><i class="fa fa-bookmark"></i> Sitemap</h1>
+                <p>Front-End에 필요한 웹사이트들 목록입니다.</p>
+            </article>
+            <!-- // 타이틀 부분 -->
+
+
+            <!-- 등록 부분 -->
+            <div class="hidden-xs">
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li role="presentation" class="active"><a href="#addSiteSec" aria-controls="addSiteSec" role="tab" data-toggle="tab">사이트 등록하기</a></li>
+                    <li role="presentation"><a href="#requestCategorySec" aria-controls="requestCategorySec" role="tab" data-toggle="tab">카테고리 등록 요청하기</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!-- 사이트 등록하기 -->
+                    <div role="tabpanel" class="tab-pane active addFormSec addSiteSec" id="addSiteSec">
+                        <h2><i class="fa fa-plus"></i> 사이트 등록하기</h2>
+                        <ul>
+                            <li>기존의 카테고리일 경우, 작성 및 등록 가능합니다.</li>
+                            <li>Front-End와 무관한 링크 및 홍보성 블로그 링크는 삭제됩니다.</li>
+                        </ul>
+                        <div id="addSiteForm" class="col-sm-11 col-sm-offset-0"></div>
+                    </div>
+                    <!-- // 사이트 등록하기 -->
+
+                    <!-- 카테고리 요청하기 -->
+                    <div role="tabpanel" class="tab-pane addFormSec requestCategorySec" id="requestCategorySec">
+                        <h2><i class="fa fa-plus"></i> 카테고리 등록 요청하기</h2>
+                        <ul>
+                            <li>기존 카테고리가 없다면 하단의 카테고리 등록 요청해주세요.</li>
+                        </ul>
+                        <div id="addCategoryForm" class="col-sm-11 col-sm-offset-0"></div>
+                    </div>
+                    <!-- // 카테고리 요청하기 -->
+
+                </div>
+
+            </div>
+            <!-- // 등록 부분 -->
+
+        </div>
+
+        <div class="col-sm-9">
+
+            <div id="siteList"></div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- react module -->
+<script type="text/javascript" src="react/addSiteForm.js"></script>
+<script type="text/javascript" src="react/addCategoryForm.js"></script>
+<script type="text/javascript" src="react/siteList.js"></script>
+
+
+<script type="text/javascript">
+    $(function(){
+        siteListAjax(function(sites){
+            React.render(
+                    React.createElement(AddSiteFormBox,{sites:sites}),
+                    document.getElementById('addSiteForm')
+            );
+            React.render(
+                    React.createElement(AddCategoryFormBox),
+                    document.getElementById('addCategoryForm')
+            );
+            React.render(
+                    React.createElement(siteListBox,{sites:sites}),
+                    document.getElementById('siteList')
+            );
+        });
+    });
+
+    function siteListAjax(callbackFn){
+        var url = "https://spreadsheets.google.com/feeds/list/1LUpSEGkQkhBkyesisz5m8X4q3g9qcoI5fu0w74h56ps/1/public/values?alt=json";
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            cache: false,
+            success: function(response) {
+                var cells = _.map(response.feed.entry,function(data){
+                    var o = {};
+                    _.each(data,function(item,key){
+                        if(key.indexOf("gsx$")!= -1){
+                            var nkey = key.split("gsx$")[1];
+                            o[nkey] = data[key].$t;
+                        }
+                    });
+                    return o;
+                });
+                var sites = _.rest(cells); // 맨 처음 데이터를 지우고 리턴함.
+
+                callbackFn(sites);
+            },
+            error: function(xhr, status, err) {
+
+            }
+        });
+    }
+</script>
+</body>
+</html>

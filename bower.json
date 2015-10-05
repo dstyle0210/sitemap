@@ -1,0 +1,20 @@
+{
+  "name": "doors",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dstyle0210/doors",
+  "authors": [
+    "dstyle0210 <dstyle0210@gmail.com>"
+  ],
+  "description": "front-end developer's favorites bookmarks",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

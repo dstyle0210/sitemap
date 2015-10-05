@@ -1,0 +1,21 @@
+$point:#d9534f !default;
+
+// bootstrap custom
+.nav-pills{margin-top:30px;}
+.nav-pills>li>a{color:#333;}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{background:$point;}
+
+// 타이틀 영역
+.titleSec{
+  i{color:$point;}
+}
+
+// 사이트, 카테고리 등록하기
+.addFormSec{width:100%;overflow: hidden;
+  h2{font-size:18px;
+    i{font-size:14px;color:$point;}
+  }
+  ul{font-size:13px;
+    li{padding-bottom:4px;}
+  }
+}
