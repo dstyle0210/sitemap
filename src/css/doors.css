@@ -1,0 +1,24 @@
+.nav-pills {
+  margin-top: 30px; }
+
+.nav-pills > li > a {
+  color: #333; }
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background: #d9534f; }
+
+.titleSec i {
+  color: #d9534f; }
+
+.addFormSec {
+  width: 100%;
+  overflow: hidden; }
+  .addFormSec h2 {
+    font-size: 18px; }
+    .addFormSec h2 i {
+      font-size: 14px;
+      color: #d9534f; }
+  .addFormSec ul {
+    font-size: 13px; }
+    .addFormSec ul li {
+      padding-bottom: 4px; }

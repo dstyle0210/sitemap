@@ -8,7 +8,6 @@ var AddSiteFormBox = React.createClass({
             type: "POST",
             success: function(response) {
                 console.log("성공");
-                siteListAjax(function(){});
             }.bind(this),
             error: function(xhr, status, err) {
                 // 오류시 사용
@@ -43,7 +42,8 @@ var AddSiteForm_mod_form = React.createClass({
         var desc = $("#addSite_desc").val(); //React.findDOMNode(this.refs.desc).value.trim();
 
         // TODO: 서버에 요청을 전송합니다
-        this.props.onCommentSubmit({category: category, title: title,url:url,name:name,desc:desc});
+        this.props.onCommentSubmit({category: category, title: title,url:url,name:name,desc:desc,referrer:document.referrer});
+
 
         $("#addSite_name").val("");
         $("#addSite_url").val("");

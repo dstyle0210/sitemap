@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<form method="post" onSubmit="return submitCall();">
+    <input type="text" id="tag" />
+    <input type="text" id="name" />
+    <input type="text" id="desc" />
+    <input type="text" id="url" />
+    <input type="text" id="r_name" />
+    <input type="text" id="r_email" />
+    <button type="submit">등록</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+
+<script>
+var url = "https://spreadsheets.google.com/feeds/list/1YTV7T8MQlB9yH0duq7gU5vMuGQjO8hoLaFWDeO2JkaY/1/public/values?alt=json";
+var formUrl = "https://script.google.com/macros/s/AKfycbxMFTqL9C18OHiO1y3n0KNkC8RYOFhwdcaGI5_gudviIYtKNdE/exec";
+
+$(function(){
+    load();
+});
+
+function load(){
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        cache: false,
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(xhr, status, err) {
+
+        }
+    });
+}
+
+function submitCall(){
+    var tag = $("#tag").val();  // React.findDOMNode(this.refs.category).value.trim();
+    var name = $("#name").val(); //React.findDOMNode(this.refs.title).value.trim();
+    var desc = $("#desc").val(); //React.findDOMNode(this.refs.name).value.trim();
+    var url = $("#url").val(); //React.findDOMNode(this.refs.url).value.trim();
+    var r_name = $("#r_name").val(); //React.findDOMNode(this.refs.desc).value.trim();
+    var r_email = $("#r_email").val(); //React.findDOMNode(this.refs.desc).value.trim();
+
+    var data = {tag: tag,name:name,desc:desc,url:url,r_name:r_name,r_email:r_email};
+    console.log(data);
+    $.ajax({
+        url: formUrl,
+        data: data,
+        type: "POST",
+        success: function(response) {
+            console.log(response);
+            load();
+        }.bind(this),
+        error: function(xhr, status, err) {
+            // 오류시 사용
+        }.bind(this)
+    });
+
+    $("#tag").val("");
+    $("#name").val("");
+    $("#desc").val("");
+    $("#url").val("");
+    $("#r_name").val("");
+    $("#r_email").val("");
+
+    return false;
+}
+
+
+</script>
+</body>
+</html>
