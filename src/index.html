@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/doors.css"/>
 </head>
 <body>
-<a href="#" onclick="callSiteListBox();return false;">다시 로딩</a>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3">
@@ -36,51 +35,10 @@
                             <li>Front-End에 도움되는 대표 , 플러그인 웹사이트을 올려주세요.</li>
                             <li>Front-End와 무관한 링크 및 홍보성 블로그 링크는 삭제됩니다.</li>
                         </ul>
-                        <form class="col-sm-11 col-sm-offset-0" id="addSiteForm">
-                            <div class="well">
-                                <div class="form-group">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="type" id="officialRadio" value="official" checked /> 대표 공식 사이트
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="type" id="pluginRadio" value="plugin" /> 플러그인 공식 사이트
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> html</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> javascript</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> css</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> nodejs</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> tools</label>
 
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> jQuery</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> Grunt</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> Gulp</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> prototype</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> Bootstrap</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> Mootools</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> LESS</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> React</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> underscore</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> SASS,SCSS</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> Font Awesome</label>
-                                    <label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1" /> Angularjs</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="name" placeholder="웹사이트명">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="url" placeholder="웹사이트주소">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="r_name" placeholder="등록자">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="r_email" placeholder="등록자 이메일">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </div>
-                        </form>
+                        <div class="col-sm-11 col-sm-offset-0" id="addSiteForm">
+
+                        </div>
                     </div>
                     <!-- // 사이트 등록하기 -->
 
@@ -124,107 +82,33 @@
         </div>
         <div class="col-sm-9">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-lg-4">
                     <h3>Official Website <small>대표 공식 사이트</small></h3>
+
+                    <!-- 대표 공식 사이트 목록이 불러지는 DOM -->
                     <div class="officialList" id="officialList"></div>
-                    <!--<div class="officialList list-group row masonry-container">
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                            <div style="padding-bottom:3px;"><span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">jQuery</h4>
-                            <p class="list-group-item-text">말이 필요 없는 자바스크립트 라이브러리</p>
-                            <div style="text-align:right;font-size:11px;">Registration by <span href="dstyle0210@gmail.com">dstyle</span></div>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                            <div style="padding-bottom:3px;"><span class="label label-success">nodejs</span></div>
-                            <h4 class="list-group-item-heading">Grunt</h4>
-                            <p class="list-group-item-text">업무 자동화을 도와주는 Task Runner</p>
-                            <div style="text-align:right;font-size:11px;">
-                                update by <span href="dstyle0210@gmail.com">dstyle</span>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">Prototype</h4>
-                            <p class="list-group-item-text">자바스크립트 라이브러리</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-default">HTML</span> <span class="label label-info">CSS</span> <span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">Bootstrap</h4>
-                            <p class="list-group-item-text">UI 프레임워크</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">Mootools</h4>
-                            <p class="list-group-item-text">자바스크립트 라이브러리</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-info">CSS</span></div>
-                            <h4 class="list-group-item-heading">LESS</h4>
-                            <p class="list-group-item-text">CSS 전처리기</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">underscore</h4>
-                            <p class="list-group-item-text">자바스크립트 라이브러리</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-info">CSS</span></div>
-                            <h4 class="list-group-item-heading">SASS , SCSS</h4>
-                            <p class="list-group-item-text">CSS 전처리기</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-info">CSS</span></div>
-                            <h4 class="list-group-item-heading">Font Awesome</h4>
-                            <p class="list-group-item-text">아이콘 CSS 프레임워크</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">Angularjs</h4>
-                            <p class="list-group-item-text">MV* 프레임워크</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                            <div><span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">React</h4>
-                            <p class="list-group-item-text">MV* 프레임워크</p>
-                        </a>
-                    </div>-->
+                    <!-- // 대표 공식 사이트 목록이 불러지는 DOM -->
+
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-lg-4">
                     <h3>Plugin Website <small>플러그인 공식 사이트</small></h3>
-                    <div class="pluginList list-group row">
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                            <div><span class="label label-warning">Grunt</span> <span class="label label-info">CSS</span></div>
-                            <h4 class="list-group-item-heading"> csscomb</h4>
-                            <p class="list-group-item-text">CSS소스를 원하는 구조대로 보여주는 기능을 하는 task plugin</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                            <div><span class="label label-warning">Grunt</span> <span class="label label-info">LESS</span> <span class="label label-info">CSS</span></div>
-                            <h4 class="list-group-item-heading">grunt-contrib-less</h4>
-                            <p class="list-group-item-text">LESS을 CSS로 바꿔주는 Grunt Task Plugin </p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                            <div><span class="label label-info">LESS</span></div>
-                            <h4 class="list-group-item-heading">LESS hat</h4>
-                            <p class="list-group-item-text">LESS로 미리 만들어진 mixin</p>
-                        </a>
-                        <a href="#" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                            <div><span class="label label-primary">jQuery</span> <span class="label label-primary">javascript</span></div>
-                            <h4 class="list-group-item-heading">Masonry</h4>
-                            <p class="list-group-item-text">계단,벽돌식 레이아웃 플러그인</p>
-                        </a>
-                    </div>
+
+                    <!-- 플러그인 사이트 목록이 불러지는 DOM -->
+                    <div class="pluginList" id="pluginList"></div>
+                    <!-- // 플러그인 사이트 목록이 불러지는 DOM -->
+
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-lg-4">
                     <h3>Posts <small>게시물</small></h3>
                     <div class="officialList list-group row">
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">꼭 알아야 될 크롬개발자 도구의 15가지 팁!</a>
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">Front-End 관련 한국어 번역글 위키</a>
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">Morbi leo risus</a>
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">Porta ac consectetur ac</a>
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">Morbi leo risus</a>
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">Porta ac consectetur ac</a>
-                        <a href="#" class="list-group-item col-xs-12 col-sm-6 col-md-4 col-lg-3">Vestibulum at eros</a>
+                        <a href="#" class="list-group-item col-xs-12">꼭 알아야 될 크롬개발자 도구의 15가지 팁!</a>
+                        <a href="#" class="list-group-item col-xs-12">Front-End 관련 한국어 번역글 위키</a>
+                        <a href="#" class="list-group-item col-xs-12">Morbi leo risus</a>
+                        <a href="#" class="list-group-item col-xs-12">Porta ac consectetur ac</a>
+                        <a href="#" class="list-group-item col-xs-12">Vestibulum at eros</a>
+                        <a href="#" class="list-group-item col-xs-12">Morbi leo risus</a>
+                        <a href="#" class="list-group-item col-xs-12">Porta ac consectetur ac</a>
+                        <a href="#" class="list-group-item col-xs-12">Vestibulum at eros</a>
                     </div>
                 </div>
 
@@ -239,28 +123,32 @@
 
 
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="data/categoryJson.js"></script>
+<!-- sitemap Json Data import -->
+<script src="js/data/categoryJson.js"></script>
+
+<!-- library Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>-->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-<script src="app/_getEntryData.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
 
-<!-- React Modules -->
-<script src="app/labelBox.js"></script>
-<script src="app/siteListBox.js"></script>
+<!-- add custom js library plugin  -->
+<script src="js/lib/_getEntryData.js"></script>
 
+<!-- React Box import -->
+<script src="js/box/labelBox.js"></script>
+<script src="js/box/siteListBox.js"></script>
+<script src="js/box/siteFormBox.js"></script>
 
-<script src="app/reactBoxApp.js"></script>
-<script>
-    $(function(){
-        callSiteListBox();
-    });
-</script>
+<!-- Ajax Call Function import -->
+<script src="js/fn/sitemapAjaxCall.js"></script>
+<script src="js/fn/sitemapMasonryCall.js"></script>
+
+<!-- sitemap Start -->
+<script src="js/sitemap.js"></script>
 
 </body>
 </html>
