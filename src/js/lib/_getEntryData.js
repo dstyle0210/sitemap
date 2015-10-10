@@ -9,6 +9,6 @@ _.getEntry = function(response){
         });
         return o;
     });
-    cells = _.rest(cells); // 맨 처음 데이터를 지우고 리턴함.
+    // cells = _.rest(cells); // 맨 처음 데이터를 지우고 리턴함.
     return cells;
 };

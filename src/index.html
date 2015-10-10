@@ -36,9 +36,10 @@
                             <li>Front-End와 무관한 링크 및 홍보성 블로그 링크는 삭제됩니다.</li>
                         </ul>
 
-                        <div class="col-sm-11 col-sm-offset-0" id="addSiteForm">
+                        <!-- 사이트 입력 폼이 불러지는 DOM -->
+                        <div class="col-sm-11 col-sm-offset-0" id="addSiteForm"></div>
+                        <!-- // 사이트 입력 폼이 불러지는 DOM -->
 
-                        </div>
                     </div>
                     <!-- // 사이트 등록하기 -->
 
@@ -49,31 +50,11 @@
                             <li>Front-End에 도움되는 게시물(포스팅, 뉴스등)을 올려주세요.</li>
                             <li>Front-End와 무관한 링크 및 홍보성 블로그 링크는 삭제됩니다.</li>
                         </ul>
-                        <form class="col-sm-11 col-sm-offset-0" id="addPostForm">
-                            <div class="well">
-                                <div class="form-group">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="type" id="engRadio" value="eng" checked /> 영문 사이트
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="type" id="korRadio" value="kor"  /> 한글 사이트
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="title" placeholder="포스트 제목">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="url" placeholder="웹사이트주소">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="r_name" placeholder="등록자">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="r_email" placeholder="등록자 이메일">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </div>
-                        </form>
+
+                        <!-- 사이트 입력 폼이 불러지는 DOM -->
+                        <div class="col-sm-11 col-sm-offset-0" id="addPostForm"></div>
+                        <!-- // 사이트 입력 폼이 불러지는 DOM -->
+
                     </div>
                     <!-- // 카테고리 요청하기 -->
 
@@ -100,16 +81,10 @@
                 </div>
                 <div class="col-xs-12 col-lg-4">
                     <h3>Posts <small>게시물</small></h3>
-                    <div class="officialList list-group row">
-                        <a href="#" class="list-group-item col-xs-12">꼭 알아야 될 크롬개발자 도구의 15가지 팁!</a>
-                        <a href="#" class="list-group-item col-xs-12">Front-End 관련 한국어 번역글 위키</a>
-                        <a href="#" class="list-group-item col-xs-12">Morbi leo risus</a>
-                        <a href="#" class="list-group-item col-xs-12">Porta ac consectetur ac</a>
-                        <a href="#" class="list-group-item col-xs-12">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item col-xs-12">Morbi leo risus</a>
-                        <a href="#" class="list-group-item col-xs-12">Porta ac consectetur ac</a>
-                        <a href="#" class="list-group-item col-xs-12">Vestibulum at eros</a>
-                    </div>
+                    
+                    <!-- 게시물 목록이 불러지는 DOM -->
+                    <div class="postsList" id="postsList"></div>
+                    <!-- // 게시물 목록이 불러지는 DOM -->
                 </div>
 
             </div>
@@ -140,6 +115,16 @@
 
 <!-- React Box import -->
 <script src="js/box/labelBox.js"></script>
+<script src="js/box/formTagsBox.js"></script>
+<script src="js/box/formInputBox.js"></script>
+<script src="js/box/formTextareaBox.js"></script>
+<script src="js/box/formTypeBox.js"></script>
+<script src="js/box/formSiteBox.js"></script>
+<script src="js/box/formPostsBox.js"></script>
+<script src="js/box/listSiteBox.js"></script>
+<script src="js/box/listPostBox.js"></script>
+
+
 <script src="js/box/siteListBox.js"></script>
 <script src="js/box/siteFormBox.js"></script>
 

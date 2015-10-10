@@ -20,13 +20,13 @@ tagsData.push(
     {name:"jquery",color:tagColorSet.javascript,type:"plugin"},
     {name:"prototype",color:tagColorSet.javascript,type:"plugin"},
     {name:"mootools",color:tagColorSet.javascript,type:"plugin"},
-    {name:"less",color:tagColorSet.javascript,type:"plugin"},
-    {name:"sass",color:tagColorSet.javascript,type:"plugin"},
-    {name:"grunt",color:tagColorSet.javascript,type:"plugin"},
-    {name:"gulp",color:tagColorSet.javascript,type:"plugin"},
-    {name:"bootstrap",color:tagColorSet.javascript,type:"plugin"},
-    {name:"eclipse",color:tagColorSet.javascript,type:"plugin"},
-    {name:"webstrorm",color:tagColorSet.javascript,type:"plugin"}
+    {name:"less",color:tagColorSet.css,type:"plugin"},
+    {name:"sass",color:tagColorSet.css,type:"plugin"},
+    {name:"grunt",color:tagColorSet.nodejs,type:"plugin"},
+    {name:"gulp",color:tagColorSet.nodejs,type:"plugin"},
+    {name:"bootstrap",color:tagColorSet.html,type:"plugin"},
+    {name:"eclipse",color:tagColorSet.tools,type:"plugin"},
+    {name:"webstrorm",color:tagColorSet.tools,type:"plugin"}
 );
 
 

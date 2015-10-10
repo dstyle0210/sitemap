@@ -1,65 +1,55 @@
+// 어느쪽 데이터가 움직이는지 구분자
+function getSiteTypeJson(siteType){
+    var o = {listurl:"",formurl:"",targetdiv:""};
+    switch(siteType){
+        case "official":
+            o.listurl = officialListUrl;
+            o.formurl = officialFormUrl;
+            o.targetdiv = "officialList";
+            break;
+        case "plugin":
+            o.listurl = pluginListUrl;
+            o.formurl = pluginFormUrl;
+            o.targetdiv = "pluginList";
+            break;
+        case "posts":
+            o.listurl = postsListUrl;
+            o.formurl = postsFormUrl;
+            o.targetdiv = "postsList";
+            break;
+    };
+    return o;
+}
 
 // 대표사이트 호출
 function callSiteListBox(siteType){
-    var siteType = siteType;
-    if(siteType=="official"){
-        $.ajax({
-            url: officialListUrl,
-            dataType: 'json',
-            cache: false,
-            success: function(response) {
-                $("#officialList").html("");
+    var o = getSiteTypeJson(siteType);
+    $.ajax({
+        url: o.listurl,
+        dataType: 'json',
+        cache: false,
+        success: function(response) {
+            React.render(
+                React.createElement(SiteListBox, {sites:_.getEntry(response),type:siteType}),
+                document.getElementById(o.targetdiv)
+            );
 
-                React.render(
-                    React.createElement(SiteListBox, {sites:_.getEntry(response)}),
-                    document.getElementById('officialList')
-                );
+            setTimeout(function(){
+                masonryUi();
+            },100);
+        }.bind(this),
+        error: function(xhr, status, err) {
 
-                setTimeout(function(){
-                    masonryUi();
-                },100);
-            }.bind(this),
-            error: function(xhr, status, err) {
-
-            }
-        });
-    }else{
-        $.ajax({
-            url: pluginListUrl,
-            dataType: 'json',
-            cache: false,
-            success: function(response) {
-                $("#pluginList").html("");
-
-                React.render(
-                    React.createElement(SiteListBox, {sites:_.getEntry(response)}),
-                    document.getElementById('pluginList')
-                );
-
-                setTimeout(function(){
-                    masonryUi();
-                },100);
-            }.bind(this),
-            error: function(xhr, status, err) {
-
-            }
-        });
-    }
+        }
+    });
 };
 
 
 // 대표사이트 데이터 넣기
-function callSiteFormBox(url,data){
-    var siteType;
-    if(url==officialListUrl){
-        siteType = "official";
-    }else if(url==pluginListUrl){
-        siteType = "plugin";
-    }else if(url==postsListUrl){
-        siteType = "posts";
-    };
+function callSiteFormBox(siteType,data){
+    var o = getSiteTypeJson(siteType);
     $.ajax({
-        url: url,
+        url: o.formurl,
         data: data,
         type: "POST",
         success: function(response) {
