@@ -23,21 +23,34 @@
     .addFormSec ul li {
       padding-bottom: 4px; }
 
-.list-group .tags {
-  padding-bottom: 5px;
+.listTitleSec {
+  position: relative;
+  width: 100%; overflow:hidden;}
+  .listTitleSec h3 {
+    float: left; }
+  .listTitleSec .btnSec {
+    float: right;
+    margin-top: 20px; }
+
+.officialList, .pluginList, .postsList {
+  width: 100%; }
+
+.list-group {
   width: 100%;
   overflow: hidden; }
-  .list-group .tags .label {
-    margin-right: 2px;
-    display: inline-block; }
-
-.list-group .list-group-item-text {
-  font-size: 12px; }
-
-.list-group .reg {
-  text-align: right;
-  font-size: 11px;
-  color: #999; }
+  .list-group .tags {
+    padding-bottom: 5px;
+    width: 100%;
+    overflow: hidden; }
+    .list-group .tags .label {
+      margin-right: 2px;
+      display: inline-block; }
+  .list-group .list-group-item-text {
+    font-size: 12px; }
+  .list-group .reg {
+    text-align: right;
+    font-size: 11px;
+    color: #999; }
 
 .postsList .list-group .tags {
   width: auto;
@@ -50,3 +63,18 @@
 
 .postsList .list-group .reg {
   padding-top: 2px; }
+
+h3 .fa {
+  font-size: 18px; }
+
+h3 small {
+  font-size: 12px; }
+
+.fa-cog {
+  color: #d9534f; }
+
+.fa-cogs {
+  color: #d9534f; }
+
+.fa-sticky-note-o {
+  color: #d9534f; }

@@ -7,11 +7,11 @@ var ListPostBox = React.createClass({
         var posts = _.shuffle(this.props.posts);
         return React.createElement(
             "div",
-            { className: "list-group row" },
+            { className: "list-group" },
             posts.map(function (post, idx) {
                 return React.createElement(
                     "a",
-                    { key: idx, href: post.url, className: "list-group-item col-xs-12" },
+                    { key: idx, href: post.url, className: "list-group-item col-xs-12 col-sm-6 col-lg-12", target: "_blank" },
                     React.createElement(LabelBox, { tags: post.lang }),
                     React.createElement(
                         "span",

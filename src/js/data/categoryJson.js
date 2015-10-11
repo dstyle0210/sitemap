@@ -4,7 +4,8 @@ var tagColorSet = {
     javascript:"#337ab7",
     css:"#5bc0de",
     nodejs:"#5cb85c",
-    tools:"#f0ad4e"
+    tools:"#f0ad4e",
+    framework:"#624889"
 }
 
 var tagsData = ctc = [
@@ -14,7 +15,8 @@ var tagsData = ctc = [
     {name:"javascript",color:tagColorSet.javascript,type:"official"},
     {name:"css",color:tagColorSet.css,type:"official"},
     {name:"nodejs",color:tagColorSet.nodejs,type:"official"},
-    {name:"tools",color:tagColorSet.tools,type:"official"}
+    {name:"tools",color:tagColorSet.tools,type:"official"},
+    {name:"framework",color:tagColorSet.framework,type:"official"}
 ];
 tagsData.push(
     {name:"jquery",color:tagColorSet.javascript,type:"plugin"},
@@ -24,7 +26,8 @@ tagsData.push(
     {name:"sass",color:tagColorSet.css,type:"plugin"},
     {name:"grunt",color:tagColorSet.nodejs,type:"plugin"},
     {name:"gulp",color:tagColorSet.nodejs,type:"plugin"},
-    {name:"bootstrap",color:tagColorSet.html,type:"plugin"},
+    {name:"bootstrap",color:tagColorSet.framework,type:"plugin"},
+    {name:"react",color:tagColorSet.framework,type:"plugin"},
     {name:"eclipse",color:tagColorSet.tools,type:"plugin"},
     {name:"webstrorm",color:tagColorSet.tools,type:"plugin"}
 );

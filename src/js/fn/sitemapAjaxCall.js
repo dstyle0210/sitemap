@@ -24,13 +24,19 @@ function getSiteTypeJson(siteType){
 // 대표사이트 호출
 function callSiteListBox(siteType){
     var o = getSiteTypeJson(siteType);
+    // 로딩 시작
+    $("#"+o.targetdiv).html("");
+    var aside = $("#"+siteType+"Aside");
+    console.log(aside);
+    aside.find("span").show();
+    aside.find("button").hide();
+
+
     $.ajax({
         url: o.listurl,
         dataType: 'json',
         cache: false,
         success: function(response) {
-            $("#"+o.targetdiv).html("");
-
             React.render(
                 React.createElement(SiteListBox, {sites:_.getEntry(response),type:siteType}),
                 document.getElementById(o.targetdiv)
@@ -39,6 +45,11 @@ function callSiteListBox(siteType){
             setTimeout(function(){
                 masonryUi();
             },200);
+            setTimeout(function(){
+                aside.find("span").hide();
+                aside.find("button").show();
+            },500);
+
         }.bind(this),
         error: function(xhr, status, err) {
 

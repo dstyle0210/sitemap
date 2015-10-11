@@ -53,6 +53,11 @@ var FormSiteBox = React.createClass({
         data.regemail = val;
         this.props.onFormSubmit(this.state.type,data);
 
+        // 데이터 리셋
+        $("#addSiteForm input[type='checkbox']").removeAttr("checked");
+        $("#name,#url,#desc,#regname,#regemail").val("");
+
+
         return;
     },
     componentDidMount: function() {

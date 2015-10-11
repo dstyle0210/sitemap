@@ -7,11 +7,11 @@ var ListSiteBox = React.createClass({
         var sites = _.shuffle(this.props.sites);
         return React.createElement(
             "div",
-            { className: "officialList list-group row masonry-container" },
+            { className: "list-group masonry-container" },
             sites.map(function (site, idx) {
                 return React.createElement(
                     "a",
-                    { key: idx, href: site.url, className: "list-group-item col-xs-6" },
+                    { key: idx, href: site.url, className: "list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-6", target: "_blank" },
                     React.createElement(LabelBox, { tags: site.tag }),
                     React.createElement(
                         "h4",
