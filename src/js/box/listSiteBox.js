@@ -4,10 +4,11 @@ var ListSiteBox = React.createClass({
     displayName: "ListSiteBox",
 
     render: function render() {
+        var sites = _.shuffle(this.props.sites);
         return React.createElement(
             "div",
             { className: "officialList list-group row masonry-container" },
-            this.props.sites.map(function (site, idx) {
+            sites.map(function (site, idx) {
                 return React.createElement(
                     "a",
                     { key: idx, href: site.url, className: "list-group-item col-xs-6" },

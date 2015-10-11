@@ -2,25 +2,56 @@ var FormSiteBox = React.createClass({
     handleSubmit:function(e){
         e.preventDefault();
 
-        var temp = [];
-        $("#addSiteForm input[type='checkbox']:checked").each(function(){
-            temp.push($(this).val());
-        });
-        var tags = temp.join(",");
-        var url = $("#url").val();
-        var name = $("#name").val();
-        var desc = $("#desc").val();
-        var regname = $("#regname").val();
-        var regemail = $("#regemail").val();
+        var data = {};
+        var val = "";
+        // 태그 저장.
+        var tagChecked = $("#addSiteForm input[type='checkbox']:checked");
+        if(tagChecked.length==0){
+            alert("태그를 선택해주세요.");
+            return;
+        };
+        data.tag = (_.map(tagChecked,function(inp){return $(inp).val()})).join(",");
 
-        this.props.onFormSubmit(this.state.type,{
-            tag:tags,
-            name:name,
-            url:url,
-            desc:desc,
-            regname:regname,
-            regemail:regemail
-        });
+        // 웹사이트명
+        val = $("#name").val();
+        if(val==""){
+            alert("웹사이트 명을 입력해주세요.");
+            return;
+        };
+        data.name = val;
+
+        // 웹사이트 주소
+        val = $("#url").val();
+        if(val==""){
+            alert("웹사이트 주소를 입력해주세요.");
+            return;
+        };
+        data.url = val;
+
+        // 웹사이트 설명
+        val = $("#desc").val();
+        if(val==""){
+            alert("웹사이트 설명을 입력해주세요.");
+            return;
+        };
+        data.desc = val;
+
+        // 등록자 이름
+        val = $("#regname").val();
+        if(val==""){
+            alert("등록자를 입력해주세요.");
+            return;
+        };
+        data.regname = val;
+
+        // 등록자 이메일
+        val = $("#regemail").val();
+        if(val==""){
+            alert("등록자 이메일을 입력해주세요.");
+            return;
+        };
+        data.regemail = val;
+        this.props.onFormSubmit(this.state.type,data);
 
         return;
     },

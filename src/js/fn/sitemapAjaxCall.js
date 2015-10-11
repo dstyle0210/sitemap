@@ -29,6 +29,8 @@ function callSiteListBox(siteType){
         dataType: 'json',
         cache: false,
         success: function(response) {
+            $("#"+o.targetdiv).html("");
+
             React.render(
                 React.createElement(SiteListBox, {sites:_.getEntry(response),type:siteType}),
                 document.getElementById(o.targetdiv)
@@ -36,7 +38,7 @@ function callSiteListBox(siteType){
 
             setTimeout(function(){
                 masonryUi();
-            },100);
+            },200);
         }.bind(this),
         error: function(xhr, status, err) {
 

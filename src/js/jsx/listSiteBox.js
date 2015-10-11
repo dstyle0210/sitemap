@@ -1,7 +1,8 @@
 var ListSiteBox = React.createClass({
     render:function(){
+        var sites = _.shuffle(this.props.sites);
         return (<div className="officialList list-group row masonry-container">
-            {this.props.sites.map(function(site,idx){
+            {sites.map(function(site,idx){
                 return (<a key={idx} href={site.url} className="list-group-item col-xs-6">
                     <LabelBox tags={site.tag}></LabelBox>
                     <h4 className="list-group-item-heading">{site.name}</h4>
