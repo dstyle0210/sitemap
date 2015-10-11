@@ -27,7 +27,6 @@ function callSiteListBox(siteType){
     // 로딩 시작
     $("#"+o.targetdiv).html("");
     var aside = $("#"+siteType+"Aside");
-    console.log(aside);
     aside.find("span").show();
     aside.find("button").hide();
 
