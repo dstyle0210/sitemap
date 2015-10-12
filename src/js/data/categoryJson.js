@@ -5,7 +5,8 @@ var tagColorSet = {
     css:"#5bc0de",
     nodejs:"#5cb85c",
     tools:"#f0ad4e",
-    framework:"#624889"
+    framework:"#624889",
+    community:"#009ac8"
 }
 
 var tagsData = ctc = [
@@ -16,7 +17,8 @@ var tagsData = ctc = [
     {name:"css",color:tagColorSet.css,type:"official"},
     {name:"nodejs",color:tagColorSet.nodejs,type:"official"},
     {name:"tools",color:tagColorSet.tools,type:"official"},
-    {name:"framework",color:tagColorSet.framework,type:"official"}
+    {name:"framework",color:tagColorSet.framework,type:"official"},
+    {name:"community",color:tagColorSet.community,type:"official"}
 ];
 tagsData.push(
     {name:"jquery",color:tagColorSet.javascript,type:"plugin"},
