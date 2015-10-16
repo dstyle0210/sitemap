@@ -15,4 +15,4 @@ $(function(){
         React.createElement(SiteFormBox,{type:"post"}),
         document.getElementById('addPostForm')
     );
-})
+});

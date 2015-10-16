@@ -42,9 +42,6 @@ function callSiteListBox(siteType){
             );
 
             setTimeout(function(){
-                masonryUi();
-            },200);
-            setTimeout(function(){
                 aside.find("span").hide();
                 aside.find("button").show();
             },500);

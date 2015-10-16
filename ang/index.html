@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang=ko" ng-app="sitemapApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sitemap : front-end developer's favorites bookmarks.</title>
+
+
+    <link rel="SHORTCUT ICON" type="image/x-icon" href="/sitemap/favicon.ico" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://bootswatch.com/lumen/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/sitemap.css"/>
+
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- 타이틀 부분 -->
+            <div class="titleSec">
+                <h1><i class="fa fa-bookmark"></i> Sitemap</h1>
+                <p>Front-End에 필요한 웹사이트들 목록입니다.</p>
+            </div>
+            <!-- // 타이틀 부분 -->
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+
+                <!-- 소셜 사이트 목록 -->
+                <div class="col-xs-12 col-lg-3" ng-controller="socialCtrl" id="socialCtrl">
+
+                    <!-- 상단 제목, 버튼 -->
+                    <div class="listTitleSec">
+                        <h3><i class="fa fa-cog"></i> Social Website </h3>
+                        <div class="btnSec">
+                            <span class="loader"><img src="/sitemap/src/images/sitemap-loader.gif" /></span>
+                            <button type="button" class="refresh btn btn-default btn-sm" ng-click="refresh();"><i class="fa fa-refresh"></i></button>
+                            <label class="btn btn-info btn-sm"><input type="checkbox" autocomplete="off" ng-model="writeMode"> <i class="fa fa-pencil"></i></label>
+                        </div>
+                    </div>
+                    <!-- // 상단 제목, 버튼 -->
+
+                    <!-- 쓰기 폼 -->
+                    <form class="well" method="post" ng-show="writeMode" ng-submit="update()">
+                        <div class="form-group">
+                            <label class="checkbox-inline" ng-repeat="tag in tags"><input type="checkbox" value="{{tag.name}}"><span>{{tag.name}}</span></label>
+                        </div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="name" placeholder="웹사이트 명" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="url" placeholder="웹사이트 주소" /></div>
+                        <div class="form-group"><textarea class="form-control" ng-model="desc" placeholder="웹사이트 설명" ></textarea></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regname" placeholder="등록자" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regemail" placeholder="등록자 이메일" /></div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <!-- // 쓰기 폼 -->
+
+
+                    <!-- 태그 검색 -->
+                    <div class="searchFormSec" style="padding-bottom:5px;">
+                        <select class="form-control" id="officialSelect" ng-model="search" ng-change="changeVal();">
+                            <option value="">전체</option>
+                            <option value="{{tag.name}}" ng-repeat="tag in tags">{{tag.name}}</option>
+                        </select>
+                    </div>
+                    <!-- // 태그 검색 -->
+
+                    <!-- 사이트 목록 -->
+                    <div class="list-group">
+                        <a href="{{site.url}}" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-6" target="_blank" ng-repeat="site in sites | filter:search">
+                            <div class="tags"><span class="label" style="background:{{label.color}}" ng-repeat="label in site.tagLists">{{label.name}}</span></div>
+                            <h4 class="list-group-item-heading">{{site.name}}</h4>
+                            <p class="list-group-item-text">{{site.desc}}</p>
+                            <div class="reg"><span>Registration by </span><span title="{{site.regemail}}">{{site.regname}}</span></div>
+                        </a>
+                    </div>
+                    <!-- // 사이트 목록 -->
+
+                </div>
+                <!-- // 소셜 사이트 목록 -->
+
+
+
+                <!-- 대표 공식 사이트 목록 -->
+                <div class="col-xs-12 col-lg-3" ng-controller="officialCtrl" id="officialCtrl">
+
+                    <!-- 상단 제목, 버튼 -->
+                    <div class="listTitleSec">
+                        <h3><i class="fa fa-cog"></i> Official Website </h3>
+                        <div class="btnSec">
+                            <span class="loader"><img src="/sitemap/src/images/sitemap-loader.gif" /></span>
+                            <button type="button" class="refresh btn btn-default btn-sm" ng-click="refresh();"><i class="fa fa-refresh"></i></button>
+                            <label class="btn btn-info btn-sm"><input type="checkbox" autocomplete="off" ng-model="writeMode"> <i class="fa fa-pencil"></i></label>
+                        </div>
+                    </div>
+                    <!-- // 상단 제목, 버튼 -->
+
+                    <!-- 쓰기 폼 -->
+                    <form class="well" method="post" ng-show="writeMode" ng-submit="update()">
+                        <div class="form-group">
+                            <label class="checkbox-inline" ng-repeat="tag in tags"><input type="checkbox" value="{{tag.name}}"><span>{{tag.name}}</span></label>
+                        </div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="name" placeholder="웹사이트 명" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="url" placeholder="웹사이트 주소" /></div>
+                        <div class="form-group"><textarea class="form-control" ng-model="desc" placeholder="웹사이트 설명" ></textarea></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regname" placeholder="등록자" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regemail" placeholder="등록자 이메일" /></div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <!-- // 쓰기 폼 -->
+
+
+                    <!-- 태그 검색 -->
+                    <div class="searchFormSec" style="padding-bottom:5px;">
+                        <select class="form-control" id="officialSelect" ng-model="search" ng-change="changeVal();">
+                            <option value="">전체</option>
+                            <option value="{{tag.name}}" ng-repeat="tag in tags">{{tag.name}}</option>
+                        </select>
+                    </div>
+                    <!-- // 태그 검색 -->
+
+                    <!-- 사이트 목록 -->
+                    <div class="list-group">
+                        <a href="{{site.url}}" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-6" target="_blank" ng-repeat="site in sites | filter:search">
+                            <div class="tags"><span class="label" style="background:{{label.color}}" ng-repeat="label in site.tagLists">{{label.name}}</span></div>
+                            <h4 class="list-group-item-heading">{{site.name}}</h4>
+                            <p class="list-group-item-text">{{site.desc}}</p>
+                            <div class="reg"><span>Registration by </span><span title="{{site.regemail}}">{{site.regname}}</span></div>
+                        </a>
+                    </div>
+                    <!-- // 사이트 목록 -->
+
+                </div>
+                <!-- // 대표 공식 사이트 목록 -->
+
+                <!-- 플러그인 사이트 목록 -->
+                <div class="col-xs-12 col-lg-3" ng-controller="pluginCtrl" id="pluginCtrl">
+
+                    <!-- 상단 제목, 버튼 -->
+                    <div class="listTitleSec">
+                        <h3><i class="fa fa-cogs"></i> Plugin Website </h3>
+                        <div class="btnSec">
+                            <span class="loader"><img src="/sitemap/src/images/sitemap-loader.gif" /></span>
+                            <button type="button" class="refresh btn btn-default btn-sm" ng-click="refresh();"><i class="fa fa-refresh"></i></button>
+                            <label class="btn btn-info btn-sm"><input type="checkbox" autocomplete="off" ng-model="writeMode"> <i class="fa fa-pencil"></i></label>
+                        </div>
+                    </div>
+                    <!-- // 상단 제목, 버튼 -->
+
+                    <!-- 쓰기 폼 -->
+                    <form class="well" method="post" ng-show="writeMode" ng-submit="update()">
+                        <div class="form-group">
+                            <label class="checkbox-inline" ng-repeat="tag in tags"><input type="checkbox" value="{{tag.name}}"><span>{{tag.name}}</span></label>
+                        </div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="name" placeholder="웹사이트 명" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="url" placeholder="웹사이트 주소" /></div>
+                        <div class="form-group"><textarea class="form-control" ng-model="desc" placeholder="웹사이트 설명" ></textarea></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regname" placeholder="등록자" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regemail" placeholder="등록자 이메일" /></div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <!-- // 쓰기 폼 -->
+
+
+                    <!-- 태그 검색 -->
+                    <div class="searchFormSec" style="padding-bottom:5px;">
+                        <select class="form-control" id="officialSelect" ng-model="search" ng-change="changeVal();">
+                            <option value="">전체</option>
+                            <option value="{{tag.name}}" ng-repeat="tag in tags">{{tag.name}}</option>
+                        </select>
+                    </div>
+                    <!-- // 태그 검색 -->
+
+                    <!-- 사이트 목록 -->
+                    <div class="list-group">
+                        <a href="{{site.url}}" class="list-group-item col-xs-6 col-sm-4 col-md-3 col-lg-6" target="_blank" ng-repeat="site in sites | filter:search">
+                            <div class="tags"><span class="label" style="background:{{label.color}}" ng-repeat="label in site.tagLists">{{label.name}}</span></div>
+                            <h4 class="list-group-item-heading">{{site.name}}</h4>
+                            <p class="list-group-item-text">{{site.desc}}</p>
+                            <div class="reg"><span>Registration by </span><span title="{{site.regemail}}">{{site.regname}}</span></div>
+                        </a>
+                    </div>
+                    <!-- // 사이트 목록 -->
+
+                </div>
+                <!-- // 플러그인 사이트 목록 -->
+
+
+                <!-- 게시물 사이트 목록 -->
+                <div class="col-xs-12 col-lg-3" ng-controller="postsCtrl" id="postsCtrl">
+
+                    <!-- 상단 제목, 버튼 -->
+                    <div class="listTitleSec">
+                        <h3><i class="fa fa-sticky-note-o"></i> Posts </h3>
+                        <div class="btnSec">
+                            <span class="loader"><img src="/sitemap/src/images/sitemap-loader.gif" /></span>
+                            <button type="button" class="refresh btn btn-default btn-sm" ng-click="refresh();"><i class="fa fa-refresh"></i></button>
+                            <label class="btn btn-info btn-sm"><input type="checkbox" autocomplete="off" ng-model="writeMode"> <i class="fa fa-pencil"></i></label>
+                        </div>
+                    </div>
+                    <!-- // 상단 제목, 버튼 -->
+
+                    <!-- 쓰기 폼 -->
+                    <form class="well" method="post" ng-show="writeMode" ng-submit="update()">
+                        <div class="form-group">
+                            <label class="radio-inline"><input type="radio" name="" value="eng"><span>eng</span></label>
+                            <label class="radio-inline"><input type="radio" value="kor"><span>kor</span></label>
+                        </div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="title" placeholder="포스트 제목" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="url" placeholder="포스트 주소" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regname" placeholder="등록자" /></div>
+                        <div class="form-group"><input type="text" class="form-control" ng-model="regemail" placeholder="등록자 이메일" /></div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <!-- // 쓰기 폼 -->
+
+
+                    <!-- 태그 검색 -->
+                    <div class="searchFormSec" style="padding-bottom:5px;">
+                        <select class="form-control" id="officialSelect" ng-model="search" ng-change="changeVal();">
+                            <option value="">전체</option>
+                            <option value="{{tag.name}}" ng-repeat="tag in tags">{{tag.name}}</option>
+                        </select>
+                    </div>
+                    <!-- // 태그 검색 -->
+
+                    <!-- 사이트 목록 -->
+                    <div class="postsList">
+                        <div class="list-group">
+                            <a href="{{site.url}}" class="list-group-item col-xs-12 col-sm-4 col-md-3 col-lg-12" target="_blank" ng-repeat="site in sites | filter:search">
+                                <div class="tags"><span class="label" style="background:{{site.langColor}}">{{site.lang}}</span></div>
+                                <span class="title">{{site.title}}</span>
+                                <div class="reg"><span>Registration by </span><span title="{{site.regemail}}">{{site.regname}}</span></div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- // 사이트 목록 -->
+
+                </div>
+                <!-- // 게시물 사이트 목록 -->
+
+            </div>
+
+
+
+        </div>
+        <div class="col-xs-12">
+            <div style="border-top:1px dashed #999;padding:15px 0;text-align:right;">This project is maintained by <a href="mailto:dstyle0210@gmail.com">Dstyle</a></div>
+            <div style="border-top:1px dashed #999;padding:15px 0;text-align:right;">아무로 안궁금한 <a href="#">릴리즈노트</a></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- sitemap Json Data import -->
+<script src="js/data/categoryJson.js"></script>
+
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+
+<!-- sitemap APP -->
+<script src="js/app/createApp.js"></script>
+<script src="js/app/factory/siteQuery.js"></script>
+<script src="js/app/factory/domQuery.js"></script>
+<script src="js/app/factory/masonryQuery.js"></script>
+<script src="js/app/ctrl/socialCtrl.js"></script>
+<script src="js/app/ctrl/officialCtrl.js"></script>
+<script src="js/app/ctrl/pluginCtrl.js"></script>
+<script src="js/app/ctrl/postsCtrl.js"></script>
+
+
+
+<!-- google Analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-56483625-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>
